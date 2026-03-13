@@ -10,7 +10,7 @@ class AnamneseHistory extends Model
     use HasFactory;
 
     protected $table = 'anamnese_histories';
-    
+
     protected $fillable = [
         'anamnese_id',
         'responses'
@@ -20,7 +20,6 @@ class AnamneseHistory extends Model
         'responses' => 'array'
     ];
 
-    // Relacionamento com anamnese
     public function anamnese()
     {
         return $this->belongsTo(Anamnese::class);

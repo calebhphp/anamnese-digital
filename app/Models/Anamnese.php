@@ -9,8 +9,6 @@ class Anamnese extends Model
 {
     use HasFactory;
 
-    protected $table = 'anamneses';
-    
     protected $fillable = [
         'session_id',
         'responses',
@@ -22,15 +20,11 @@ class Anamnese extends Model
         'completed' => 'boolean'
     ];
 
-    // Relacionamento com histórico
-    public function histories()
+    /**
+     * Get the history records for the anamnese.
+     */
+    public function history()
     {
         return $this->hasMany(AnamneseHistory::class);
-    }
-
-    // Pegar última resposta
-    public function getLastResponseAttribute()
-    {
-        return $this->histories()->latest()->first();
     }
 }
